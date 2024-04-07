@@ -7,7 +7,7 @@ if [[ "$OSTYPE" != "darwin"* ]] ; then
 	exit 0
 fi
 
-if [ "$(which brew)" == "" ]; then
+if [ "$(which brew > /dev/null && echo 'installed')" == '' ]; then
 	echo "homebrew is not installed." 1>&2
 	exit 1
 fi

@@ -1,0 +1,7 @@
+{
+    "workbench.colorTheme": "Iceberg",
+    "workbench.startupEditor": "none",
+    "editor.largeFileOptimizations": false,
+    "aws.telemetry": false,
+    "ngrokForVSCode.configPath": "/home/vscode/.config/ngrok/ngrok.yml"
+}

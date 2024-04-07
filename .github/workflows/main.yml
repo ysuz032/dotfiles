@@ -3,6 +3,10 @@ on:
     branches:
       - 'feature/**'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 

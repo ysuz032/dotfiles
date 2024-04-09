@@ -23,4 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Dotfiles
-        run: make
+        run: |
+          MAS_APPS="$(cat home/.Brewfile | grep -v brew | grep mas | sed 's/^.*id: \(.*\) *$/\1/' | tr '\n' ' ')"
+          export HOMEBREW_BUNDLE_MAS_SKIP="$MAS_APPS"
+          make

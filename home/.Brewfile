@@ -27,6 +27,7 @@ mas "Keynote", id: 409183694
 mas "Monosnap", id: 540348655
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+vscode "bierner.markdown-mermaid"
 vscode "cocopon.iceberg-theme"
 vscode "eamodio.gitlens"
 vscode "github.remotehub"

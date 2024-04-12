@@ -1,6 +1,7 @@
 [user]
 	name = ysuz443
 	email = 102312063+ysuz032@users.noreply.github.com.
+	signingkey = 4B07DC20AF75326F!
 [core]
 	autocrlf = false
 	ignorecase = false
@@ -12,6 +13,8 @@
 	useHttpPath = true
 [credential "https://git-codecommit.ap-northeast-1.amazonaws.com"]
 	provider = generic
+[commit]
+	gpgsign = true
 [init]
 	templatedir = ~/.git-templates/git-secrets
 [secrets]

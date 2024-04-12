@@ -64,6 +64,7 @@ alias dockerip="docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddres
 alias dockerup="docker compose up -d --build"
 alias brewtree="brew deps --tree --installed --formula"
 alias brewdeps="brew list --formula | xargs -I{} sh -c 'brew uses --installed {} | wc -l | xargs printf \"%20s is used by %2d formulae.\n\" {}'"
+alias gpgls='gpg --list-secret-keys --keyid-format=long'
 
 # path
 export PATH=$HOME/bin:$PATH

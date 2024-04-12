@@ -67,7 +67,7 @@ alias brewdeps="brew list --formula | xargs -I{} sh -c 'brew uses --installed {}
 alias gpgls='gpg --list-secret-keys --keyid-format=long'
 
 # path
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.bin:$PATH
 
 # gnu sed, grep
 export EDITOR=vi

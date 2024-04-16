@@ -80,6 +80,29 @@ export LESS="-iRMXS"
 # direnv
 eval "$(direnv hook zsh)"
 
+# aws
+fnc aws() {
+  ARGS=()
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -p|--profile)
+        PROFILE="$2"
+        shift # past argument
+        shift # past value
+        ;;
+      *)
+        ARGS+=("$1") # save positional arg
+        shift # past argument
+        ;;
+    esac
+  done
+  if [ -z "$PROFILE" ]; then
+    echo 'Required argument not specified. Usage: aws --profile <command>' 1>&2
+    return 1
+  fi
+  aws-vault exec $PROFILE -- docker run -it --rm --name aws -e AWS_REGION -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN --mount type=bind,source=$(pwd),target=/aws amazon/aws-cli ${ARGS[@]}
+}
+
 # ngrok
 func ngrok() {
   arg="$1"

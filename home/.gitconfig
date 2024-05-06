@@ -7,6 +7,7 @@
 	ignorecase = false
 	quotepath = false
 	safecrlf = true
+	pager = less -F -X
 [credential]
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]

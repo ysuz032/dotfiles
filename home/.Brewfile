@@ -1,7 +1,7 @@
 tap "homebrew/bundle"
 tap "powershell/tap"
 brew "direnv"
-brew "git-secrets"
+brew "git-secrets", args: ["HEAD"]
 brew "gnu-sed"
 brew "grep"
 brew "mas"

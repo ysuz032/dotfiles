@@ -1,0 +1,55 @@
+#!/bin/zsh
+
+# select template, using select(2) program
+PS3='select template: Enter 'q' for exit! > '
+templates='ubuntu'
+selected_template=''
+select selected_template in $templates
+do
+  if [ "${REPLY}" = 'q' ]; then
+      echo "quit."
+      exit 0
+  fi
+
+  if [ -n "${selected_template}" ]; then
+    break
+  else
+    echo 'invalid number selected'
+  fi
+done
+
+# input containerName
+read 'container_name?input containerName:'
+
+# confirm
+enable_create=''
+cat << __EOL__
+------------------------------------
+Create devcontainer.json as follows:
+
+- template: ${selected_template}
+- containerName: ${container_name}
+------------------------------------
+__EOL__
+read 'continue?continue? (y/n):'
+case "$continue" in
+    [yY])
+        enable_create='true'
+        ;;
+    *)
+        enable_create='false'
+        ;;
+esac
+
+if [ "$enable_create" != 'true' ]; then
+    echo 'quit.'
+    exit 0
+fi
+
+# create devcontainer.json
+template_id=''
+if [ "$selected_template" = 'ubuntu' ]; then
+    template_id='ghcr.io/ysuz032/devcontainer-templates/ubuntu:latest'
+fi
+template_args="'{\"containerName\":\"${container_name}\"}'"
+devcontainer templates apply --template-id=${template_id} --template-args="$template_args"

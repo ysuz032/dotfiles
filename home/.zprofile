@@ -65,6 +65,9 @@ alias dockerup="docker compose up -d --build"
 alias brewtree="brew deps --tree --installed --formula"
 alias brewdeps="brew list --formula | xargs -I{} sh -c 'brew uses --installed {} | wc -l | xargs printf \"%20s is used by %2d formulae.\n\" {}'"
 alias gpgls='gpg --list-secret-keys --keyid-format=long'
+alias gcloud='docker run -it --rm --name gcloud --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/google-cloud-cli:slim gcloud'
+alias gcloud-setup='docker run -it --name gcloud-config gcr.io/google.com/cloudsdktool/google-cloud-cli:slim gcloud auth login'
+alias gcloud-clear='docker rm -v gcloud-config >/dev/null'
 
 # path
 export PATH=$HOME/.bin:$PATH
@@ -81,7 +84,7 @@ export LESS="-iRMXS"
 eval "$(direnv hook zsh)"
 
 # aws
-fnc aws() {
+func aws() {
   ARGS=()
   while [[ $# -gt 0 ]]; do
     case $1 in

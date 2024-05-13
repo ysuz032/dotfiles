@@ -68,6 +68,7 @@ alias gpgls='gpg --list-secret-keys --keyid-format=long'
 alias gcloud='docker run -it --rm --name gcloud --volumes-from gcloud-config gcr.io/google.com/cloudsdktool/google-cloud-cli:slim gcloud'
 alias gcloud-setup='docker run -it --name gcloud-config gcr.io/google.com/cloudsdktool/google-cloud-cli:slim gcloud auth login'
 alias gcloud-clear='docker rm -v gcloud-config >/dev/null'
+alias pwsh='docker run -it --rm --name pwsh --platform linux/amd64 --rm mcr.microsoft.com/powershell:7.2-debian-11'
 
 # path
 export PATH=$HOME/.bin:$PATH

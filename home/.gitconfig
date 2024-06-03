@@ -17,6 +17,7 @@
 [commit]
 	gpgsign = true
 [init]
+	defaultBranch = main
 	templatedir = ~/.git-templates/git-secrets
 [secrets]
 	providers = git secrets --aws-provider

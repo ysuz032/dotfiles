@@ -3,5 +3,6 @@
     "workbench.startupEditor": "none",
     "editor.largeFileOptimizations": false,
     "aws.telemetry": false,
-    "ngrokForVSCode.configPath": "/home/vscode/.config/ngrok/ngrok.yml"
+    "ngrokForVSCode.configPath": "/home/vscode/.config/ngrok/ngrok.yml",
+    "redhat.telemetry.enabled": true
 }

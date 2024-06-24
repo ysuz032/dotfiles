@@ -106,7 +106,6 @@ func aws() {
   fi
   aws-vault exec $PROFILE -- docker run -it --rm --name aws \
     -e AWS_REGION -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN \
-    --mount type=bind,source=$(pwd),target=/aws \
     --mount type=bind,source=${HOME}/.ssh,target=/root/.ssh,consistency=readonly \
     --publish=8022:8022 --publish=8080:8080 \
     ysuz032/awscli-ssm ${ARGS[@]}

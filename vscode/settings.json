@@ -4,5 +4,8 @@
     "editor.largeFileOptimizations": false,
     "aws.telemetry": false,
     "ngrokForVSCode.configPath": "/home/vscode/.config/ngrok/ngrok.yml",
-    "redhat.telemetry.enabled": true
+    "redhat.telemetry.enabled": true,
+    "github.experimental.multipleAccounts": true,
+    "gitlens.codeLens.enabled": false,
+    "remoteHub.commitDirectlyWarning": "off"
 }

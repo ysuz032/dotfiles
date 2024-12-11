@@ -89,10 +89,24 @@ func aws() {
   ARGS=()
   while [[ $# -gt 0 ]]; do
     case $1 in
-      -p|--profile)
+      -P|--profile)
         PROFILE="$2"
         shift # past argument
         shift # past value
+        ;;
+      -p|--listen-port)
+        LISTEN_PORT="$2"
+        shift # past argument
+        shift # past value
+        ;;
+      -l|--container-local-port)
+        CONTAINER_LOCAL_PORT="$2"
+        shift # past argument
+        shift # past value
+        ;;
+      -m|--mount)
+        ENABLE_MOUNT="true"
+        shift # past argument
         ;;
       *)
         ARGS+=("$1") # save positional arg
@@ -100,14 +114,25 @@ func aws() {
         ;;
     esac
   done
-  if [ -z "$PROFILE" ]; then
-    echo 'Required argument not specified. Usage: aws --profile <command>' 1>&2
-    return 1
+
+  # build aws command
+  cmd=""
+  if [ -n "$PROFILE" ]; then
+    cmd+="aws-vault exec $PROFILE -- "
   fi
-  aws-vault exec $PROFILE -- docker run -it --rm --name aws \
-    -e AWS_REGION -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN \
-    --mount type=bind,source=${HOME}/.ssh,target=/root/.ssh,consistency=readonly \
-    ysuz032/awscli-ssm ${ARGS[@]}
+  cmd+="docker run -it --rm --name aws "
+  if [ -n "$ENABLE_MOUNT" ]; then
+    cmd+="--mount type=bind,source=${HOME}/.ssh,target=/root/.ssh,consistency=readonly "
+  fi
+  if [ -n "$LISTEN_PORT" ]; then
+    cmd+="-p ${LISTEN_PORT}:${LISTEN_PORT} -e LISTEN_PORT=$LISTEN_PORT "
+  fi
+  if [ -n "$CONTAINER_LOCAL_PORT" ]; then
+    cmd+="-e CONTAINER_LOCAL_PORT=$CONTAINER_LOCAL_PORT "
+  fi
+  cmd+="-e AWS_REGION -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN "
+  cmd+="ysuz032/awscli-ssm ${ARGS[@]}"
+  eval ${cmd}
 }
 
 # ngrok

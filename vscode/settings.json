@@ -10,5 +10,13 @@
     "remoteHub.commitDirectlyWarning": "off",
     "python.analysis.extraPaths": [
         "/home/vscode/.local/lib/python3.10/site-packages"
-    ]
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "go.toolsManagement.autoUpdate": true,
+    "cline.preferredLanguage": "Japanese - 日本語",
+    "editor.tabSize": 2,
+    "editor.indentSize": "tabSize",
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:o3-mini"
 }

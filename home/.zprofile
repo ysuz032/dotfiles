@@ -81,9 +81,6 @@ export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
 # less
 export LESS="-iRMXS"
 
-# direnv
-eval "$(direnv hook zsh)"
-
 # aws
 func aws() {
   ARGS=()

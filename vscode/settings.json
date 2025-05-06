@@ -18,5 +18,7 @@
     "editor.tabSize": 2,
     "editor.indentSize": "tabSize",
     "gitlens.ai.model": "vscode",
-    "gitlens.ai.vscode.model": "copilot:o3-mini"
+    "gitlens.ai.vscode.model": "copilot:o3-mini",
+    "cline.vsCodeLmModelSelector": {},
+    "github.copilot.chat.agent.thinkingTool": true
 }
